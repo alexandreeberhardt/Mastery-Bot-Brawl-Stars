@@ -1,0 +1,41 @@
+here are my control settings, you can easily change it if you've other screen settings ! (in pixels)
+
+middle
+Coordonnées du clic: (X: 984, Y: 568)
+
+
+deplacement
+Coordonnées du clic: (X: 285, Y: 716)
+bords trigo
+Coordonnées du clic: (X: 407, Y: 726)
+Coordonnées du clic: (X: 287, Y: 603)
+Coordonnées du clic: (X: 165, Y: 727)
+Coordonnées du clic: (X: 283, Y: 839)
+rayon = 115
+
+attaque
+Coordonnées du clic: (X: 1626, Y: 683)
+bords trigo
+Coordonnées du clic: (X: 1748, Y: 683)
+Coordonnées du clic: (X: 1623, Y: 571)
+Coordonnées du clic: (X: 1505, Y: 695)
+Coordonnées du clic: (X: 1629, Y: 809)
+rayon = 115
+
+ulti
+Coordonnées du clic: (X: 1384, Y: 785)
+bords trigo
+Coordonnées du clic: (X: 1503, Y: 781)
+Coordonnées du clic: (X: 1383, Y: 656)
+Coordonnées du clic: (X: 1276, Y: 788)
+Coordonnées du clic: (X: 1397, Y: 888)
+rayon = 115
+
+pouvoir star
+Coordonnées du clic: (X: 1264, Y: 905)
+gadget
+Coordonnées du clic: (X: 1540, Y: 912)
+
+
+
+

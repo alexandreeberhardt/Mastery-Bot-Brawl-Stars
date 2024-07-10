@@ -1,0 +1,4 @@
+here are the timings of the game
+
+spawn of smoke : 20 sec 
+smoke visible from both sides (left and right) : 110 sec 
