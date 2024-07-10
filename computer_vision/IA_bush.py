@@ -42,6 +42,7 @@ def get_bush_info():
     rectangles = draw_rectangles(gamescreen, result, bush)
     _, list_bush= mark_bushes(gamescreen, rectangles)
     return {"nb_bush":len(list_bush),"list_bush":list_bush}
+
 def main():
     gamescreen, bush = load_images()
     result = find_bushes(gamescreen, bush)
