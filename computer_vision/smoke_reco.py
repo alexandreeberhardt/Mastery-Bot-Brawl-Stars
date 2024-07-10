@@ -40,7 +40,7 @@ def position_moyenne(points):
 
 for (x, y,w ,h) in rectangles:
     cv2.rectangle(gamescreen, (x, y), (x + w, y + h), (255,0,0), 2)
-    print(f"Il y a des buissons en x={x} y={y}")
+    print(f"Il y a de la smoke en x={x} y={y}")
     liste_bush.append((x,y))
 if len(liste_bush)!=0:
     '''bush_sorted_by_x_min = sorted(liste_bush, key=lambda point: point[0])[:10]
