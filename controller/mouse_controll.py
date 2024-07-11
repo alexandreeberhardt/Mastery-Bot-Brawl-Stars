@@ -216,7 +216,8 @@ def keyboard_control():
         listener.join()
 
 def main():
-    keyboard_control()
+    time.sleep(2)
+    avance_droite_temps(3)
 
 if __name__ == "__main__":
     main()

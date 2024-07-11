@@ -66,12 +66,14 @@ def from_a_to_b(a,b):
     return dist,angle_degrees
 
 
+
 def jouer(perso,box,bush,smoke,smoke_mean):
     nb_perso = perso["nb_perso"]
     is_smoke = smoke["nb_smoke"]>3
     is_box = box["nb_box"]>0
     is_bush = bush["nb_bush"]>0
-    if is_bush :
+    joué=False
+    if is_bush and nb_perso==1 :
         bush_coords = np.array(bush['list_bush'])
         perso_coords = np.array(perso['list_perso'][0])
         distances = np.linalg.norm(bush_coords - perso_coords, axis=1)
@@ -79,7 +81,7 @@ def jouer(perso,box,bush,smoke,smoke_mean):
         bush_dist_sort = sorted(bush_dist, key=lambda x: x[1])
         closest_bush = bush_dist_sort[0]
         print("closest_bush",closest_bush)
-    if is_box :
+    if is_box and nb_perso==1  :
         box_coords = np.array(box['list_box'])
         perso_coords = np.array(perso['list_perso'][0])
         distances = np.linalg.norm(box_coords - perso_coords, axis=1)
@@ -88,11 +90,21 @@ def jouer(perso,box,bush,smoke,smoke_mean):
         closest_box = box_dist_sort[0]
         print("closest_box",closest_box)
     
-    if is_bush and nb_perso==1 :
+    if is_smoke and nb_perso==1 and joué==False:
+        smoke_coord_mean = smoke_mean["mean_pos"]
+        smoke_dist,smoke_angle_degrees = from_a_to_b(smoke_coord_mean,perso_coords)
+        if smoke_dist<250:
+            print(f"il y a de la smoke en {smoke_coord_mean}, je suis en {perso_coords}, je me déplace pendant {2-smoke_dist/5} avec un angle de {smoke_angle_degrees}")
+            mouse_controll.avance_angle_temps(2-smoke_dist/50,smoke_angle_degrees)
+            time.sleep(abs(2-smoke_dist/5))
+            joué=True
+
+    if is_bush and nb_perso==1 and joué==False:
         dist,angle_degrees=from_a_to_b(perso_coords,closest_bush[0])
-        print(f"il y a un bush en {closest_bush[0]}, je suis en {perso_coords}, je me déplace pendant {dist/250} avec un angle de {angle_degrees}")
-        mouse_controll.avance_angle_temps(dist/250,angle_degrees)
-        time.sleep(dist/250)
+        print(f"il y a un bush en {closest_bush[0]}, je suis en {perso_coords}, je me déplace pendant {dist/150} avec un angle de {angle_degrees}")
+        mouse_controll.avance_angle_temps(dist/150,angle_degrees)
+        time.sleep(5+dist/150)
+        joué=True
 
 
     
@@ -116,7 +128,7 @@ def boucle():
     listener.stop()
 
 def debug():
-    time.sleep(2)
+    time.sleep(1)
     path_to_screen = take_screenshot()
     box = IA_box.get_box_info(path_to_screen)
     perso = IA_perso.get_perso_info(path_to_screen)
@@ -126,7 +138,8 @@ def debug():
     print(perso,box,bush,smoke,smoke_mean)
     jouer(perso,box,bush,smoke,smoke_mean)
 def main():
-    debug()
+    for i in range (100):
+        debug()
 
 if __name__==__name__:
     main()
