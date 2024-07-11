@@ -1,9 +1,9 @@
 import cv2
 import numpy as np
 
-def load_images():
-    gamescreen = cv2.imread('../screens/gameplay_2.png', cv2.IMREAD_UNCHANGED)
-    perso = cv2.imread('../screens/perso_rond.png', cv2.IMREAD_UNCHANGED)
+def load_images(path_to_gameplay):
+    gamescreen = cv2.imread(path_to_gameplay, cv2.IMREAD_UNCHANGED) #'../screens/gameplay_2.png'
+    perso = cv2.imread('/home/alexandre/Mastery-Bot-Brawl-Stars/screens/perso_rond.png', cv2.IMREAD_UNCHANGED)
     return gamescreen, perso
 
 def find_person(gamescreen, perso):
@@ -25,8 +25,8 @@ def draw_rectangles(gamescreen, result, perso, threshold=0.40):
         
     return gamescreen, rectangles
 
-def get_perso_info():
-    gamescreen, perso = load_images()
+def get_perso_info(path_to_gameplay):
+    gamescreen, perso = load_images(path_to_gameplay)
     result = find_person(gamescreen, perso)
     _, rectangles = draw_rectangles(gamescreen, result, perso)
     list_perso = [(x, y) for (x, y, w, h) in rectangles]
@@ -38,10 +38,11 @@ def display_image(image, window_name='image'):
     cv2.destroyAllWindows()
 
 def main():
-    gamescreen, perso = load_images()
+    path_to_gameplay='../screens/gameplay_2.png'
+    gamescreen, perso = load_images(path_to_gameplay)
     result = find_person(gamescreen, perso)
     marked_screen, _ = draw_rectangles(gamescreen, result, perso)
-    print(get_perso_info())
+    print(get_perso_info(path_to_gameplay))
     display_image(marked_screen)
 
 if __name__ == "__main__":

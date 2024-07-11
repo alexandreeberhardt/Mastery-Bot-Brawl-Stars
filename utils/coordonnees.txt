@@ -36,6 +36,3 @@ Coordonnées du clic: (X: 1264, Y: 905)
 gadget
 Coordonnées du clic: (X: 1540, Y: 912)
 
-
-
-

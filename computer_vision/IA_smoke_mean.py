@@ -23,7 +23,7 @@ def position_moyenne(points):
         
         return moyenne_x, moyenne_y
 
-def draw_rectangles(gamescreen, result, smoke, threshold=0.90):
+def draw_rectangles(gamescreen, result, smoke, threshold=0.80):
     w = smoke.shape[1]
     h = smoke.shape[0]
     yloc, xloc = np.where(result >= threshold)

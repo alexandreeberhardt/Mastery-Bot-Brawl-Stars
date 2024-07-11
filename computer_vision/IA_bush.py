@@ -1,9 +1,9 @@
 import cv2
 import numpy as np
 
-def load_images():
-    gamescreen = cv2.imread('../screens/gameplay_6.png', cv2.IMREAD_UNCHANGED)
-    bush = cv2.imread('../screens/bush_top_clean.png', cv2.IMREAD_UNCHANGED)
+def load_images(path_to_gameplay):
+    gamescreen = cv2.imread(path_to_gameplay, cv2.IMREAD_UNCHANGED) #'../screens/gameplay_2.png'
+    bush = cv2.imread('/home/alexandre/Mastery-Bot-Brawl-Stars/screens/bush_top_clean.png', cv2.IMREAD_UNCHANGED)
     return gamescreen,bush
 
 def find_bushes(gamescreen, bush):
@@ -36,20 +36,21 @@ def display_image(image, window_name='image'):
     cv2.waitKey()
     cv2.destroyAllWindows()
 
-def get_bush_info():
-    gamescreen, bush = load_images()
+def get_bush_info(path_to_gameplay):
+    gamescreen, bush = load_images(path_to_gameplay)
     result = find_bushes(gamescreen, bush)
     rectangles = draw_rectangles(gamescreen, result, bush)
     _, list_bush= mark_bushes(gamescreen, rectangles)
     return {"nb_bush":len(list_bush),"list_bush":list_bush}
 
 def main():
-    gamescreen, bush = load_images()
+    path_to_gameplay='../play_screen/screenshot_a2_s7.png'
+    gamescreen, bush = load_images(path_to_gameplay)
     result = find_bushes(gamescreen, bush)
     rectangles = draw_rectangles(gamescreen, result, bush)
     marked_screen, _= mark_bushes(gamescreen, rectangles)
 
-    print(get_bush_info())
+    print(get_bush_info(path_to_gameplay))
     
     display_image(marked_screen)
 
